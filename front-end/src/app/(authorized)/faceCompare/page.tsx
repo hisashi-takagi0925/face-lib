@@ -1,3 +1,5 @@
+import { PageContent } from "./_components/PageContent";
+
 export default function Home() {
-  return <div>Hello!e!!!ee!eee!</div>;
+  return <PageContent />;
 }
