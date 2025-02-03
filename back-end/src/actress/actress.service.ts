@@ -37,20 +37,24 @@ export class ActressService {
   }
 
   async findAll(params: ActressSearchParams = {}) {
-    return this.fetchData<ActressResponse>({
+    const data = await this.fetchData<ActressResponse>({
       api_id: this.API_ID,
       affiliate_id: this.AFFILIATE_ID,
       output: 'json',
       ...params,
     });
+
+    return data.result.actress.filter((actress) => actress.imageURL?.large);
   }
 
   async findOne(id: ActressSearchParams['actress_id']) {
-    return this.fetchData<SingleActressResponse>({
+    const data = await this.fetchData<SingleActressResponse>({
       api_id: this.API_ID,
       affiliate_id: this.AFFILIATE_ID,
       output: 'json',
       actress_id: id,
     });
+
+    return data.actress.imageURL.large ? data.actress : undefined;
   }
 }

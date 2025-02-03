@@ -1,23 +1,32 @@
 export interface ActressResponse {
-  actress: {
-    id: number;
-    name: string;
-    ruby: string;
-    bust: number;
-    waist: number;
-    hip: number;
-    height: number;
-    birthday: string;
-    blood_type: string;
-    hobby: string;
-    prefectures: string;
-    imageURL: {
-      small: string;
-      large: string;
-    };
-  }[];
-  result_count: number;
+  result: {
+    actress: {
+      id: number;
+      name: string;
+      ruby: string;
+      bust: string | null;
+      waist: string | null;
+      hip: string | null;
+      height: string | null;
+      birthday: string | null;
+      blood_type: string | null;
+      hobby: string | null;
+      prefectures: string | null;
+      imageURL?: {
+        small?: string;
+        large?: string;
+      };
+      listURL?: {
+        digital?: string;
+      };
+    }[];
+    first_position: number;
+    result_count: number;
+    total_count: number;
+  };
 }
+
+export type Actresses = ActressResponse['result']['actress'];
 
 export interface ActressSearchParams {
   initial?: string;
