@@ -3,7 +3,7 @@ import { ActressInfo } from "./ActressInfo";
 
 export const PageContent = async () => {
   const actresses = await getActresses({
-    offset: 601,
+    offset: 2001,
     hits: 100,
   });
 

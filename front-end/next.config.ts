@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "pics.dmm.co.jp",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "pics.dmm.co.jp",
+        pathname: "/**",
+      },
     ],
   },
 };
