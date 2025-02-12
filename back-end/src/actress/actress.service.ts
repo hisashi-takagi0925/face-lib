@@ -1,10 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import {
-  ActressResponse,
-  ActressSearchParams,
-  SingleActressResponse,
-} from './dto/actress.dto';
+import { ActressResponse, ActressSearchParams } from './dto/actress.dto';
 import { firstValueFrom } from 'rxjs';
 import { ConfigService } from '@nestjs/config';
 
@@ -48,13 +44,13 @@ export class ActressService {
   }
 
   async findOne(id: ActressSearchParams['actress_id']) {
-    const data = await this.fetchData<SingleActressResponse>({
+    const data = await this.fetchData<ActressResponse>({
       api_id: this.API_ID,
       affiliate_id: this.AFFILIATE_ID,
       output: 'json',
       actress_id: id,
     });
-
-    return data.actress.imageURL.large ? data.actress : undefined;
+    console.log('data', data.result.actress[0]);
+    return data.result.actress[0];
   }
 }

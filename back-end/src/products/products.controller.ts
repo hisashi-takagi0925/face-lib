@@ -6,8 +6,8 @@ import { ProductSearchParams } from './dto/product.dto';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get('actress/:id')
-  findByActress(
+  @Get(':id')
+  findByProduct(
     @Param('id') id: string,
     @Query() query: Omit<ProductSearchParams, 'actress_id'>,
   ) {
